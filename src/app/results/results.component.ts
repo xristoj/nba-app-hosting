@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { HomeTeam } from '../model/all-teams/home-team';
 import { VisitorTeam } from '../model/all-teams/visitor-team';
 import { FetchDataService } from '../service/fetch-data.service';
@@ -12,7 +12,7 @@ import { FetchDataService } from '../service/fetch-data.service';
 export class ResultsComponent {
     displayTeam: HomeTeam | VisitorTeam;
 
-    constructor(private fetchDataService: FetchDataService, private route: ActivatedRoute, private router: Router) {
+    constructor(private fetchDataService: FetchDataService, private route: ActivatedRoute) {
         this.route.params.subscribe((params) => {
             console.log(this.fetchDataService.displayTeamList);
             for(let i: number = 0; i < this.fetchDataService.displayTeamList.length; i++) {
@@ -21,9 +21,6 @@ export class ResultsComponent {
                     console.log(this.displayTeam)
                     break;
                 } else {
-                    if(i === this.fetchDataService.displayTeamList.length - 1) {
-                        this.router.navigate(['../../']);
-                    }
                     continue;
                 }
             }

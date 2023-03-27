@@ -2,6 +2,8 @@
     <option *ngFor="let item of teamList" [value]="item.id">{{ item.full_name }}</option>
 </select>
 <button id="trackBtn" (click)="getTeam()" [disabled]="!selectedOption" >Track Team</button>
+<br><br>
+<hr>
 <div *ngFor="let team of displayTeamList">
     <p>{{team.teamData.full_name}} &#91;{{team.teamData.abbreviation}}&#93;</p>
     <p>{{team.teamData.conference}} conference</p>
