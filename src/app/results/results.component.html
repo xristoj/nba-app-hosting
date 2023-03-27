@@ -1,0 +1,9 @@
+<p>{{displayTeam.full_name}} &#91;{{displayTeam.abbreviation}}&#93;</p>
+<p>{{displayTeam.conference}} conference</p>
+<p>Scores of past 12 days:</p>
+<ul>
+    <li *ngFor="let result of displayTeam.scoreBoth">
+        <span>{{result}}</span>
+    </li>
+</ul>
+<a class="btn btn-primary" [routerLink]="['/']">Back to all team stats</a>

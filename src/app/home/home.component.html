@@ -1,0 +1,29 @@
+<select [(ngModel)]="selectedValue" name="" id="teamSelect" (change)="selectedOption = true">
+    <option *ngFor="let item of teamList" [value]="item.id">{{ item.full_name }}</option>
+</select>
+<button id="trackBtn" (click)="getTeam()" [disabled]="!selectedOption" >Track Team</button>
+<div *ngFor="let team of displayTeamList">
+    <p>{{team.teamData.full_name}} &#91;{{team.teamData.abbreviation}}&#93;</p>
+    <p>{{team.teamData.conference}} conference</p>
+    <div class="row m-0">
+        <div class="col-12">
+            <p class="text-right"><span (click)="onRemoveItem(team.id)" style="cursor: pointer; font-size: 30px;">&times;</span></p>
+        </div>
+        <div class="col-sm-6">
+            <img [src]="team.teamData.imageUrl" alt="" style="max-width: 100%;">
+        </div>
+        <div class="col-sm-6">
+            <p>Results of the past 12 days:</p>
+            <ul>
+                <li *ngFor="let result of team.teamData.scoreList">
+                    <span *ngIf="result === 'WON'" style="background-color: greenyellow;">WON</span>
+                    <span *ngIf="result === 'LOST'" style="background-color: red;">LOST</span>
+                </li>
+            </ul>
+            <p>Average points scored: {{team.teamData.scoreAverage}}</p>
+            <a class="btn btn-primary" [routerLink]="['/results/', team.id]">See game reults</a>
+
+        </div>
+    </div>
+    <hr>
+</div>
