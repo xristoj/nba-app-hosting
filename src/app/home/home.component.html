@@ -20,6 +20,7 @@
                 <li *ngFor="let result of team.teamData.scoreList">
                     <span *ngIf="result === 'WON'" style="background-color: greenyellow;">WON</span>
                     <span *ngIf="result === 'LOST'" style="background-color: red;">LOST</span>
+                    <span *ngIf="result === 'EQUAL'" style="background-color: gray;">EQUAL</span>
                 </li>
             </ul>
             <p>Average points scored: {{team.teamData.scoreAverage}}</p>

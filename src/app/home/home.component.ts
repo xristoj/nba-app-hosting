@@ -70,10 +70,24 @@ export class HomeComponent {
         for(let i = 0; i < this.gamingResults.length; i++) {
             console.log(this.gamingResults[i]);
             if(this.gamingResults[i].home_team.id === this.fetchDataService.idSelectTeam) {
-                (this.gamingResults[i].home_team_score - this.gamingResults[i].visitor_team_score) < 0 ? this.currentScoreList.push("LOST") : this.currentScoreList.push("WON");
+                if(this.gamingResults[i].home_team_score - this.gamingResults[i].visitor_team_score < 0) {
+                    this.currentScoreList.push("LOST");
+                } else if(this.gamingResults[i].home_team_score - this.gamingResults[i].visitor_team_score > 0) {
+                    this.currentScoreList.push("WON");
+                } else {
+                    this.currentScoreList.push("EQUAL");
+                }
+                //(this.gamingResults[i].home_team_score - this.gamingResults[i].visitor_team_score) < 0 ? this.currentScoreList.push("LOST") : this.currentScoreList.push("WON");
                 this.currentScoreValue += this.gamingResults[i].home_team_score;
             } else {
-                (this.gamingResults[i].visitor_team_score - this.gamingResults[i].home_team_score) < 0 ? this.currentScoreList.push("LOST") : this.currentScoreList.push("WON");
+                if(this.gamingResults[i].visitor_team_score - this.gamingResults[i].home_team_score < 0) {
+                    this.currentScoreList.push("LOST");
+                } else if(this.gamingResults[i].visitor_team_score - this.gamingResults[i].home_team_score > 0) {
+                    this.currentScoreList.push("WON");
+                } else {
+                    this.currentScoreList.push("EQUAL");
+                }
+                //(this.gamingResults[i].visitor_team_score - this.gamingResults[i].home_team_score) < 0 ? this.currentScoreList.push("LOST") : this.currentScoreList.push("WON");
                 this.currentScoreValue += this.gamingResults[i].visitor_team_score;
             }
             this.currentScoreValueBothTeams.push(`${this.gamingResults[i].home_team.abbreviation} ${this.gamingResults[i].home_team_score} -- ${this.gamingResults[i].visitor_team.abbreviation} ${this.gamingResults[i].visitor_team_score}`)
